@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Application
+  Name="LightSwitchApplication.CongresoSonora.DesktopClient" xmlns="http://schemas.microsoft.com/LightSwitch/2010/xaml/model">
+  <Application.Attributes>
+    <Partial />
+  </Application.Attributes>
+  <EntityType>
+    <EntityType.Attributes>
+      <Proxy
+        Target="ServiceInterface:Nota" />
+      <DefaultScreen
+        Value="NotaDetalle">
+        <DefaultScreen.Attributes>
+          <ScreenParameterMapping
+            KeyProperty="Nota/Properties[Id]"
+            ScreenParameter="NotaDetalle/Properties[NotaId]" />
+        </DefaultScreen.Attributes>
+      </DefaultScreen>
+    </EntityType.Attributes>
+  </EntityType>
+</Application>

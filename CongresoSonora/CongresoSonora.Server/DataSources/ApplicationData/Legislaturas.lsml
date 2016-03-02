@@ -1,0 +1,546 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ServiceApplication
+  Name="LightSwitchServiceApplication" xmlns="http://schemas.microsoft.com/LightSwitch/2010/xaml/model">
+  <ServiceApplication.Attributes>
+    <Partial />
+  </ServiceApplication.Attributes>
+  <EntityType
+    Name="Legislatura">
+    <EntityType.Attributes>
+      <CreatedModifiedPropertiesEnabled />
+    </EntityType.Attributes>
+    <EntityType.Methods>
+      <EntityMethod
+        Name="Delete">
+        <EntityMethod.Attributes>
+          <Generated />
+        </EntityMethod.Attributes>
+      </EntityMethod>
+    </EntityType.Methods>
+    <EntityType.Properties>
+      <KeyProperty
+        Name="Id"
+        PropertyType=":Int32">
+        <KeyProperty.Attributes>
+          <Required />
+          <NotSearchable />
+        </KeyProperty.Attributes>
+      </KeyProperty>
+      <EntityProperty
+        Name="Numero"
+        PropertyType=":String">
+        <EntityProperty.Attributes>
+          <Required />
+          <MaxLength
+            Value="255" />
+        </EntityProperty.Attributes>
+      </EntityProperty>
+      <EntityProperty
+        Name="Romano"
+        PropertyType=":String">
+        <EntityProperty.Attributes>
+          <Required />
+          <MaxLength
+            Value="255" />
+        </EntityProperty.Attributes>
+      </EntityProperty>
+      <EntityProperty
+        Name="Logo"
+        PropertyType="Microsoft.LightSwitch.Extensions:Image?">
+        <EntityProperty.Attributes>
+          <NotSearchable />
+        </EntityProperty.Attributes>
+      </EntityProperty>
+      <EntityProperty
+        Name="InicioPeriodo"
+        PropertyType=":Date">
+        <EntityProperty.Attributes>
+          <Required />
+          <NotSearchable />
+        </EntityProperty.Attributes>
+      </EntityProperty>
+      <EntityProperty
+        Name="FinPeriodo"
+        PropertyType=":Date">
+        <EntityProperty.Attributes>
+          <Required />
+          <NotSearchable />
+        </EntityProperty.Attributes>
+      </EntityProperty>
+      <NavigationProperty
+        Name="LegislaturaComisions"
+        Association="LegislaturaComision_Legislatura"
+        FromEnd="Legislatura"
+        ToEnd="LegislaturaComision" />
+      <NavigationProperty
+        Name="Notas"
+        Association="Nota_Legislatura"
+        FromEnd="Legislatura"
+        ToEnd="Nota" />
+      <NavigationProperty
+        Name="SintesisCollection"
+        Association="Sintesis_Legislatura"
+        FromEnd="Legislatura"
+        ToEnd="Sintesis" />
+      <NavigationProperty
+        Name="Archivos"
+        Association="Archivo_Legislatura"
+        FromEnd="Legislatura"
+        ToEnd="Archivo" />
+      <NavigationProperty
+        Name="FotoLegislaturas"
+        Association="FotoLegislatura_Legislatura"
+        FromEnd="Legislatura"
+        ToEnd="FotoLegislatura" />
+      <NavigationProperty
+        Name="Epoca"
+        Association="Epoca_Legislatura"
+        FromEnd="Legislatura"
+        ToEnd="Epoca" />
+      <NavigationProperty
+        Name="LegislaturaDiputadoes"
+        Association="LegislaturaDiputado_Legislatura"
+        FromEnd="Legislatura"
+        ToEnd="LegislaturaDiputado" />
+      <EntityProperty
+        Name="CreatedBy"
+        IsReadOnly="True"
+        PropertyType=":Person?">
+        <EntityProperty.Attributes>
+          <Generated />
+          <NotSearchable />
+          <MaxLength
+            Value="255" />
+        </EntityProperty.Attributes>
+      </EntityProperty>
+      <EntityProperty
+        Name="Created"
+        IsReadOnly="True"
+        PropertyType=":DateTimeOffset?">
+        <EntityProperty.Attributes>
+          <Generated />
+          <NotSearchable />
+        </EntityProperty.Attributes>
+      </EntityProperty>
+      <EntityProperty
+        Name="ModifiedBy"
+        IsReadOnly="True"
+        PropertyType=":Person?">
+        <EntityProperty.Attributes>
+          <Generated />
+          <NotSearchable />
+          <MaxLength
+            Value="255" />
+        </EntityProperty.Attributes>
+      </EntityProperty>
+      <EntityProperty
+        Name="Modified"
+        IsReadOnly="True"
+        PropertyType=":DateTimeOffset?">
+        <EntityProperty.Attributes>
+          <Generated />
+          <NotSearchable />
+        </EntityProperty.Attributes>
+      </EntityProperty>
+      <EntityProperty
+        Name="RowVersion"
+        PropertyType=":RowVersion">
+        <EntityProperty.Attributes>
+          <Hidden />
+          <UseForConcurrency />
+          <Generated />
+          <NotSearchable />
+        </EntityProperty.Attributes>
+      </EntityProperty>
+    </EntityType.Properties>
+  </EntityType>
+  <EntityContainer
+    Name="ApplicationData">
+    <EntityContainer.Attributes>
+      <Partial />
+    </EntityContainer.Attributes>
+    <EntitySet
+      Name="Legislaturas"
+      CanDelete="True"
+      CanInsert="True"
+      CanUpdate="True"
+      EntityType="Legislatura" />
+    <QueryOperation
+      Name="Legislaturas_Single"
+      ReturnType="Legislatura">
+      <QueryOperation.Attributes>
+        <Generated />
+        <Description
+          Value="Returns the entity whose identity is specified by the parameter(s)." />
+      </QueryOperation.Attributes>
+      <QueryOperation.FilterExpression>
+        <QueryFilterExpressionTree>
+          <BinaryExpression
+            NodeType="Equal">
+            <BinaryExpression.Left>
+              <ChainExpression>
+                <MemberExpression
+                  Member="Id" />
+              </ChainExpression>
+            </BinaryExpression.Left>
+            <BinaryExpression.Right>
+              <ParameterExpression
+                Parameter="Id" />
+            </BinaryExpression.Right>
+          </BinaryExpression>
+        </QueryFilterExpressionTree>
+      </QueryOperation.FilterExpression>
+      <QueryOperation.Source>
+        <QuerySourceExpressionTree>
+          <MemberExpression
+            Member="Legislaturas" />
+        </QuerySourceExpressionTree>
+      </QueryOperation.Source>
+      <QueryOperationParameter
+        Name="Id"
+        ParameterType=":Int32?">
+        <QueryOperationParameter.Attributes>
+          <Description
+            Value="The value of the 'Id' key property of the entity to retrieve." />
+        </QueryOperationParameter.Attributes>
+      </QueryOperationParameter>
+    </QueryOperation>
+    <QueryOperation
+      Name="Legislaturas_SingleOrDefault"
+      ReturnType="Legislatura">
+      <QueryOperation.Attributes>
+        <Generated />
+        <Description
+          Value="Returns the entity whose identity is specified by the parameter(s) or null if no such entity exists." />
+      </QueryOperation.Attributes>
+      <QueryOperation.FilterExpression>
+        <QueryFilterExpressionTree>
+          <BinaryExpression
+            NodeType="Equal">
+            <BinaryExpression.Left>
+              <ChainExpression>
+                <MemberExpression
+                  Member="Id" />
+              </ChainExpression>
+            </BinaryExpression.Left>
+            <BinaryExpression.Right>
+              <ParameterExpression
+                Parameter="Id" />
+            </BinaryExpression.Right>
+          </BinaryExpression>
+        </QueryFilterExpressionTree>
+      </QueryOperation.FilterExpression>
+      <QueryOperation.Source>
+        <QuerySourceExpressionTree>
+          <MemberExpression
+            Member="Legislaturas" />
+        </QuerySourceExpressionTree>
+      </QueryOperation.Source>
+      <QueryOperationParameter
+        Name="Id"
+        ParameterType=":Int32?">
+        <QueryOperationParameter.Attributes>
+          <Description
+            Value="The value of the 'Id' key property of the entity to retrieve." />
+        </QueryOperationParameter.Attributes>
+      </QueryOperationParameter>
+    </QueryOperation>
+    <AssociationSet
+      Name="LegislaturaComision_Legislaturas"
+      Association="LegislaturaComision_Legislatura">
+      <AssociationSetEnd
+        Name="LegislaturaComision"
+        EntitySet="LegislaturaComisiones" />
+      <AssociationSetEnd
+        Name="Legislatura"
+        EntitySet="Legislaturas" />
+    </AssociationSet>
+    <AssociationSet
+      Name="Nota_Legislaturas"
+      Association="Nota_Legislatura">
+      <AssociationSetEnd
+        Name="Nota"
+        EntitySet="Notas" />
+      <AssociationSetEnd
+        Name="Legislatura"
+        EntitySet="Legislaturas" />
+    </AssociationSet>
+    <AssociationSet
+      Name="Sintesis_Legislaturas"
+      Association="Sintesis_Legislatura">
+      <AssociationSetEnd
+        Name="Sintesis"
+        EntitySet="SintesisSet" />
+      <AssociationSetEnd
+        Name="Legislatura"
+        EntitySet="Legislaturas" />
+    </AssociationSet>
+    <AssociationSet
+      Name="Archivo_Legislaturas"
+      Association="Archivo_Legislatura">
+      <AssociationSetEnd
+        Name="Archivo"
+        EntitySet="Archivos" />
+      <AssociationSetEnd
+        Name="Legislatura"
+        EntitySet="Legislaturas" />
+    </AssociationSet>
+    <AssociationSet
+      Name="FotoLegislatura_Legislaturas"
+      Association="FotoLegislatura_Legislatura">
+      <AssociationSetEnd
+        Name="FotoLegislatura"
+        EntitySet="FotoLegislaturas" />
+      <AssociationSetEnd
+        Name="Legislatura"
+        EntitySet="Legislaturas" />
+    </AssociationSet>
+    <AssociationSet
+      Name="LegislaturaDiputado_Legislaturas"
+      Association="LegislaturaDiputado_Legislatura">
+      <AssociationSetEnd
+        Name="LegislaturaDiputado"
+        EntitySet="LegislaturaDiputadoes" />
+      <AssociationSetEnd
+        Name="Legislatura"
+        EntitySet="Legislaturas" />
+    </AssociationSet>
+  </EntityContainer>
+  <DataService
+    Name="ApplicationDataMapping">
+    <DataService.Attributes>
+      <Partial />
+    </DataService.Attributes>
+    <AssociationSetMapping
+      AssociationSet="LegislaturaComision_Legislaturas">
+      <AssociationSetMapping.Attributes>
+        <SsdlAssociationSet
+          Name="LegislaturaComision_Legislaturas" />
+        <SsdlAssociationSetEnd
+          End="ApplicationData/Members[LegislaturaComision_Legislaturas]/Members[LegislaturaComision]">
+          <SsdlAssociationSetEnd.Attributes>
+            <SsdlPropertyRef
+              Name="LegislaturaComision_Legislatura" />
+          </SsdlAssociationSetEnd.Attributes>
+        </SsdlAssociationSetEnd>
+        <SsdlAssociationSetEnd
+          End="ApplicationData/Members[LegislaturaComision_Legislaturas]/Members[Legislatura]">
+          <SsdlAssociationSetEnd.Attributes>
+            <SsdlPropertyRef
+              Name="Id" />
+          </SsdlAssociationSetEnd.Attributes>
+        </SsdlAssociationSetEnd>
+      </AssociationSetMapping.Attributes>
+    </AssociationSetMapping>
+    <AssociationSetMapping
+      AssociationSet="Nota_Legislaturas">
+      <AssociationSetMapping.Attributes>
+        <SsdlAssociationSet
+          Name="Nota_Legislaturas" />
+        <SsdlAssociationSetEnd
+          End="ApplicationData/Members[Nota_Legislaturas]/Members[Nota]">
+          <SsdlAssociationSetEnd.Attributes>
+            <SsdlPropertyRef
+              Name="Nota_Legislatura" />
+          </SsdlAssociationSetEnd.Attributes>
+        </SsdlAssociationSetEnd>
+        <SsdlAssociationSetEnd
+          End="ApplicationData/Members[Nota_Legislaturas]/Members[Legislatura]">
+          <SsdlAssociationSetEnd.Attributes>
+            <SsdlPropertyRef
+              Name="Id" />
+          </SsdlAssociationSetEnd.Attributes>
+        </SsdlAssociationSetEnd>
+      </AssociationSetMapping.Attributes>
+    </AssociationSetMapping>
+    <AssociationSetMapping
+      AssociationSet="Sintesis_Legislaturas">
+      <AssociationSetMapping.Attributes>
+        <SsdlAssociationSet
+          Name="Sintesis_Legislaturas" />
+        <SsdlAssociationSetEnd
+          End="ApplicationData/Members[Sintesis_Legislaturas]/Members[Sintesis]">
+          <SsdlAssociationSetEnd.Attributes>
+            <SsdlPropertyRef
+              Name="Sintesis_Legislatura" />
+          </SsdlAssociationSetEnd.Attributes>
+        </SsdlAssociationSetEnd>
+        <SsdlAssociationSetEnd
+          End="ApplicationData/Members[Sintesis_Legislaturas]/Members[Legislatura]">
+          <SsdlAssociationSetEnd.Attributes>
+            <SsdlPropertyRef
+              Name="Id" />
+          </SsdlAssociationSetEnd.Attributes>
+        </SsdlAssociationSetEnd>
+      </AssociationSetMapping.Attributes>
+    </AssociationSetMapping>
+    <AssociationSetMapping
+      AssociationSet="Archivo_Legislaturas">
+      <AssociationSetMapping.Attributes>
+        <SsdlAssociationSet
+          Name="Archivo_Legislaturas" />
+        <SsdlAssociationSetEnd
+          End="ApplicationData/Members[Archivo_Legislaturas]/Members[Archivo]">
+          <SsdlAssociationSetEnd.Attributes>
+            <SsdlPropertyRef
+              Name="Archivo_Legislatura" />
+          </SsdlAssociationSetEnd.Attributes>
+        </SsdlAssociationSetEnd>
+        <SsdlAssociationSetEnd
+          End="ApplicationData/Members[Archivo_Legislaturas]/Members[Legislatura]">
+          <SsdlAssociationSetEnd.Attributes>
+            <SsdlPropertyRef
+              Name="Id" />
+          </SsdlAssociationSetEnd.Attributes>
+        </SsdlAssociationSetEnd>
+      </AssociationSetMapping.Attributes>
+    </AssociationSetMapping>
+    <AssociationSetMapping
+      AssociationSet="FotoLegislatura_Legislaturas">
+      <AssociationSetMapping.Attributes>
+        <SsdlAssociationSet
+          Name="FotoLegislatura_Legislaturas" />
+        <SsdlAssociationSetEnd
+          End="ApplicationData/Members[FotoLegislatura_Legislaturas]/Members[FotoLegislatura]">
+          <SsdlAssociationSetEnd.Attributes>
+            <SsdlPropertyRef
+              Name="FotoLegislatura_Legislatura" />
+          </SsdlAssociationSetEnd.Attributes>
+        </SsdlAssociationSetEnd>
+        <SsdlAssociationSetEnd
+          End="ApplicationData/Members[FotoLegislatura_Legislaturas]/Members[Legislatura]">
+          <SsdlAssociationSetEnd.Attributes>
+            <SsdlPropertyRef
+              Name="Id" />
+          </SsdlAssociationSetEnd.Attributes>
+        </SsdlAssociationSetEnd>
+      </AssociationSetMapping.Attributes>
+    </AssociationSetMapping>
+    <EntitySetMapping
+      EntitySet="Legislaturas">
+      <EntitySetMapping.Attributes>
+        <SsdlForeignKeyProperty
+          Name="Epoca_Legislatura"
+          Nullable="False"
+          Type="int" />
+      </EntitySetMapping.Attributes>
+    </EntitySetMapping>
+    <AssociationSetMapping
+      AssociationSet="LegislaturaDiputado_Legislaturas">
+      <AssociationSetMapping.Attributes>
+        <SsdlAssociationSet
+          Name="LegislaturaDiputado_Legislaturas" />
+        <SsdlAssociationSetEnd
+          End="ApplicationData/Members[LegislaturaDiputado_Legislaturas]/Members[LegislaturaDiputado]">
+          <SsdlAssociationSetEnd.Attributes>
+            <SsdlPropertyRef
+              Name="LegislaturaDiputado_Legislatura" />
+          </SsdlAssociationSetEnd.Attributes>
+        </SsdlAssociationSetEnd>
+        <SsdlAssociationSetEnd
+          End="ApplicationData/Members[LegislaturaDiputado_Legislaturas]/Members[Legislatura]">
+          <SsdlAssociationSetEnd.Attributes>
+            <SsdlPropertyRef
+              Name="Id" />
+          </SsdlAssociationSetEnd.Attributes>
+        </SsdlAssociationSetEnd>
+      </AssociationSetMapping.Attributes>
+    </AssociationSetMapping>
+  </DataService>
+  <Association
+    Name="LegislaturaComision_Legislatura">
+    <AssociationEnd
+      Name="LegislaturaComision"
+      Multiplicity="Many"
+      EntityType="LegislaturaComision" />
+    <AssociationEnd
+      Name="Legislatura"
+      Multiplicity="One"
+      EntityType="Legislatura">
+      <AssociationEnd.Attributes>
+        <DeleteRule
+          Action="Restrict" />
+      </AssociationEnd.Attributes>
+    </AssociationEnd>
+  </Association>
+  <Association
+    Name="Nota_Legislatura">
+    <AssociationEnd
+      Name="Nota"
+      Multiplicity="Many"
+      EntityType="Nota" />
+    <AssociationEnd
+      Name="Legislatura"
+      Multiplicity="One"
+      EntityType="Legislatura">
+      <AssociationEnd.Attributes>
+        <DeleteRule
+          Action="Restrict" />
+      </AssociationEnd.Attributes>
+    </AssociationEnd>
+  </Association>
+  <Association
+    Name="Sintesis_Legislatura">
+    <AssociationEnd
+      Name="Sintesis"
+      Multiplicity="Many"
+      EntityType="Sintesis" />
+    <AssociationEnd
+      Name="Legislatura"
+      Multiplicity="One"
+      EntityType="Legislatura">
+      <AssociationEnd.Attributes>
+        <DeleteRule
+          Action="Restrict" />
+      </AssociationEnd.Attributes>
+    </AssociationEnd>
+  </Association>
+  <Association
+    Name="Archivo_Legislatura">
+    <AssociationEnd
+      Name="Archivo"
+      Multiplicity="Many"
+      EntityType="Archivo" />
+    <AssociationEnd
+      Name="Legislatura"
+      Multiplicity="One"
+      EntityType="Legislatura">
+      <AssociationEnd.Attributes>
+        <DeleteRule
+          Action="Restrict" />
+      </AssociationEnd.Attributes>
+    </AssociationEnd>
+  </Association>
+  <Association
+    Name="FotoLegislatura_Legislatura">
+    <AssociationEnd
+      Name="FotoLegislatura"
+      Multiplicity="Many"
+      EntityType="FotoLegislatura" />
+    <AssociationEnd
+      Name="Legislatura"
+      Multiplicity="One"
+      EntityType="Legislatura">
+      <AssociationEnd.Attributes>
+        <DeleteRule
+          Action="Cascade" />
+      </AssociationEnd.Attributes>
+    </AssociationEnd>
+  </Association>
+  <Association
+    Name="LegislaturaDiputado_Legislatura">
+    <AssociationEnd
+      Name="LegislaturaDiputado"
+      Multiplicity="Many"
+      EntityType="LegislaturaDiputado" />
+    <AssociationEnd
+      Name="Legislatura"
+      Multiplicity="One"
+      EntityType="Legislatura">
+      <AssociationEnd.Attributes>
+        <DeleteRule
+          Action="Restrict" />
+      </AssociationEnd.Attributes>
+    </AssociationEnd>
+  </Association>
+</ServiceApplication>
